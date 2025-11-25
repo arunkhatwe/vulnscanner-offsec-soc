@@ -29,7 +29,7 @@ _A professional-grade recon, enumeration, and CVE detection engine._
 - Risk scoring (CVSS + CWE mapping)
 - Suggested remediation steps
 
-### 🔐 Credentialed Scanning (Advanced)
+### 🔐 Credentialed Scanning
 - SSH checks
 - Form-based HTTP login
 - Secure credential storage (Vault-backed)
@@ -39,7 +39,6 @@ _A professional-grade recon, enumeration, and CVE detection engine._
 - Censys
 - crt.sh
 - Wayback Machine  
-*(Opt-in, privacy-safe)*
 
 ### 📊 Dashboard & Reporting
 - Clean, modern Next.js dashboard
@@ -64,18 +63,4 @@ _A professional-grade recon, enumeration, and CVE detection engine._
 
 ---
 
-## 📁 Project Structure
-```bash
-vulnscanner/
- ├── web/                 # Main Next.js app
- │    ├── app/            # Pages, routes, dashboard UI
- │    ├── components/     # UI components
- │    ├── lib/            # Utilities (scanner engine, API clients)
- │    ├── prisma/         # Schema + migrations
- │    ├── styles/         # Global styles
- │    ├── public/         # Assets
- │    └── package.json
- ├── worker/              # BullMQ worker for heavy scans
- ├── docker/              # Docker configs
- ├── docs/                # Documentation + API specs
- └── README.md
+## yet to update
