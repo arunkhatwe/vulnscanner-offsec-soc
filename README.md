@@ -1,4 +1,4 @@
-# 🌐 VulnScanner — Modular Vulnerability Scanner for Red Teamers
+# 🌐 VulnScanner — Vulnerability Scanner for Red Teamers
 _A professional-grade recon, enumeration, and CVE detection engine._
 
 <p align="center">
