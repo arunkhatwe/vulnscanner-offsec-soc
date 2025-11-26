@@ -8,400 +8,319 @@ _A professional-grade recon, enumeration, and CVE detection engine._
   <img src="https://img.shields.io/badge/Database-Prisma-purple?style=for-the-badge" />
 </p>
 
----
-
-Here is your **super professional, production-grade `README.md`** — formatted for GitHub, clean, enterprise-ready, and recruiter-impressive.
-Everything from features → architecture → algorithms → roadmap → development phases is included.
-
----
-
 # 🚀 VulnScanner
 
-### **Modern, AI-Powered Vulnerability Scanning Platform**
+### **AI-Powered Offensive & Defensive Vulnerability Scanning Platform**
 
-**VulnScanner** is a next-generation, high-performance vulnerability scanning platform built for **red teams, blue teams, SOC, penetration testers, and security engineers**.
-It blends **fast active scanning**, **passive recon**, and **AI-driven security analysis** into a single, elegant platform with real-time dashboards, automation, and plugin extensibility.
+⚠️ *Core source code is private. This public README documents the architecture, capabilities & design of the system for professional review.*
 
 ---
 
-## 🌟 Key Highlights
+## ⭐ Overview
 
-* ⚡ **Ultra-fast TCP/UDP scanning** (async + Rust microservice + stealth mode)
-* 🌐 **Subdomain discovery suite** (permutations, wildcard detection, DNS classification)
-* 🔍 **HTTP analyzer** (security headers, misconfig detection, CSP evaluator)
-* 🧠 **AI attack path generator** (auto maps vulnerabilities → exploitation chain)
-* 🔧 **AI Fix Advisor** (auto remediations, infra-as-code patches)
-* 🛡️ **Credentialed scanning** (SSH, SMB, HTTP — vault-secured credentials)
-* 🧩 **Plugin ecosystem** (Node.js, Python, Docker plugins)
-* 📊 **Risk heatmaps, trends, diffs, dashboards**
-* 📄 **PDF, CSV, JSON, Markdown reporting**
-* 🔌 **Integrations**: Slack, Jira, Teams, Webhooks, GitHub Security
-* 🧱 **Isolated sandbox scanning** (Docker / Firecracker micro-VMs)
-* 👥 **Team collaboration** (RBAC, audit logs, comment system)
+**VulnScanner** is a high-performance, AI-augmented vulnerability scanning suite engineered for **red teams, SOC teams, penetration testers, DevSecOps, and MSSPs**.
+It combines ultra-fast active scanning, passive enumeration, credentialed probing, automated reporting, and AI-driven exploitation path generation — all wrapped in a real-time, modern dashboard.
+
+This README showcases the system’s full capability, architecture, design philosophy, and engineering approach.
 
 ---
 
 # 📚 Table of Contents
 
-1. [Features](#-feature-suite)
-2. [Architecture Overview](#-architecture-overview)
-3. [Core Algorithms](#-core-algorithms)
-4. [Development Roadmap](#-development-roadmap)
-5. [Project Structure](#-recommended-project-structure)
-6. [Tech Stack](#-tech-stack)
-7. [Installation](#-installation)
-8. [Usage](#-usage)
-9. [Contributing](#-contributing)
-10. [License](#-license)
+* [Features](#-feature-suite)
+* [AI Augmentation](#-ai-powered-enhancements)
+* [Architecture](#-architecture-overview)
+* [Core Algorithms](#-core-algorithms)
+* [Dashboard Features](#-dashboard--management)
+* [Plugin Ecosystem](#-plugin-ecosystem)
+* [Security](#-security--sandboxing)
+* [Development Roadmap](#-development-roadmap)
+* [Tech Stack](#-tech-stack)
+* [Project Structure](#-project-structure)
+* [Disclaimer](#-disclaimer)
 
 ---
 
 # 🔥 Feature Suite
 
-## 1. ⚡ High-Performance Scanning Engine
+## 1. ⚡ **High-Performance Scanning Engine**
 
-### **TCP/UDP Port Scanner**
+### **TCP & UDP Scanner**
 
-* Rust microservice for **ultra-fast async scanning**
-* Optional **Nmap compatibility mode**
-* **Stealth scan** (low-noise packet timing)
+* Rust microservice for ultra-high throughput
+* Async architecture (Tokio runtime)
+* Stealth scan mode for low-noise reconnaissance
+* Optional extended Nmap compatibility
 
 ### **Subdomain Discovery**
 
 * Wordlist brute-force
-* Permutation-based probe
-* ASN & CIDR mapping
-* Wildcard detection with DNS classification
+* DNS permutations & transformations
+* ASN/CIDR mapping
+* Wildcard DNS detection
+* False-positive reduction layer
 
-### **HTTP Security Analyzer**
+### **HTTP & Security Analyzer**
 
-* Header audit (CSP, HSTS, XFO, XSS-Protection)
-* Outdated server stack detection
-* Misconfiguration scoring
-* Tech fingerprinting
+* CSP, HSTS, XSS, XFO detection
+* Outdated server stack fingerprinting
+* Misconfig detection
+* Framework identification
 
-### **CMS & Technology Fingerprinting**
+### **CMS & Stack Fingerprinting**
 
 * WordPress, Joomla, Drupal enumeration
-* Plugin/theme version detection
-* Vulnerable component mapping
-* Framework detection (Laravel, Django, React, Angular)
+* Plugin/theme detection & version extraction
+* Known-vulnerable asset matching
+* Framework detection: Laravel, Django, Angular, React, Express, Spring Boot
+
+### **Real-Time CVE Intelligence**
+
+* Live NVD sync
+* CVSS v3.1 + CWE mapping
+* Exploitability scoring
+* Severity-based prioritization
 
 ---
 
-## 2. 🧠 AI-Augmented Security
+# 🧠 AI-Powered Enhancements
 
-### **AI Attack Path Generator**
+## 🤖 1. **AI Attack Path Generator**
 
-Automatically creates exploitation paths like:
+Automatically maps discovered vulnerabilities into exploitation chains:
 
 ```
-Weak SSH Key → Privilege Escalation → Docker Breakout → Host Takeover
+Weak SSH Key → User Shell → Sudo Misconfig → Container Escape → Host Compromise
 ```
 
-### **AI Fix Advisor**
+## 🛠 2. **AI Fix Advisor**
 
-Outputs:
+For each issue VulnScanner generates:
 
-* Step-by-step fix guide
-* Business impact explanation
-* Infrastructure-as-Code patches
-  (Terraform, Ansible, Firewall configs)
+* Human-readable explanation
+* Step-by-step remediation
+* Terraform or Ansible patch
+* Business impact summary
 
-### **AI Log Summaries**
+## 📄 3. **AI Log Summaries**
 
-Turns raw scanning output into readable narratives.
-
----
-
-## 3. 🔐 Enterprise Security Features
-
-### **Credentialed Scans**
-
-* SSH
-* SMB
-* HTTP Form Login
-  Credentials stored securely in **HashiCorp Vault**.
-
-### **Isolated Sandbox Scanning**
-
-* Every scan runs inside Firecracker VM or Docker
-* Protects host from malicious endpoints/plugins
-
----
-
-## 4. 📊 Dashboard & Management
-
-### **Risk Heatmap**
-
-* Severity-based visual maps
-* Host-level risk scoring
-* Trend analysis
-
-### **Scheduler & Scan History**
-
-* Daily/weekly/monthly automated scans
-* Visual diffs between old & new scan results
-* Attack surface evolution graph
-
-### **Real-Time Scan Viewer**
-
-* SSE/WebSocket streaming
-* Live logs, live progress, real-time results
-
----
-
-## 5. 🔌 Integrations & Export
-
-### **Integrations**
-
-* Slack
-* Microsoft Teams
-* Jira (auto-ticket creation)
-* GitHub Security Alerts
-* Webhooks
-
-### **Export Formats**
-
-* PDF (Pentest-style reports)
-* JSON
-* CSV/Excel
-* Markdown summary
-
----
-
-## 6. 🧩 Plugin Ecosystem
-
-### **Plugin Types**
-
-* Node.js/TypeScript
-* Python
-* Docker isolated plugins
-
-### **Plugin Manager**
-
-* Hot-swappable
-* Marketplace-ready foundation
-* Community ruleset support
+Transforms raw logs & packets into descriptive narratives for easier reporting.
 
 ---
 
 # 🏗 Architecture Overview
 
 ```
-                         ┌────────────────────────┐
-                         │      Web Frontend      │
-                         │  Next.js + Tailwind    │
-                         └───────────┬────────────┘
-                                     │
-                      Real-Time SSE / WebSockets
-                                     │
-               ┌─────────────────────┴─────────────────────┐
-               │                                           │
-        ┌──────▼──────┐                          ┌────────▼────────┐
-        │  API Layer   │                          │  Auth / RBAC    │
-        │ (Node/TS)    │                          │   JWT + Vault   │
-        └──────┬──────┘                          └────────┬────────┘
-               │                                           │
-        ┌──────▼────────────────────────────────────────────▼────────┐
-        │                 Job Queue / Workers (BullMQ)                │
-        └──────┬─────────────────────────────────────────────────────┘
-               │
-       ┌───────▼──────────────────────────────────────────────┐
-       │   Scanning Engine (Rust + Python + Docker Sandboxes)  │
-       │  - TCP/UDP Scanner                                     │
-       │  - CMS/HTTP Analyzer                                   │
-       │  - Passive Recon Modules                               │
-       │  - Credentialed Scan Agents                            │
-       └──────┬─────────────────────────────────────────────────┘
-              │
-     ┌────────▼────────┐
-     │  Database Layer  │
-     │ PostgreSQL + Redis│
-     └───────────────────┘
+                                   ┌──────────────────────────┐
+                                   │    Web Dashboard (Next)   │
+                                   └──────────────┬───────────┘
+                                                  │
+                                  Real-Time SSE / WebSockets
+                                                  │
+                         ┌─────────────────────────▼────────────────────────┐
+                         │                 API Gateway (Node/TS)            │
+                         └───────┬──────────────────────────────────────────┘
+                                 │
+                        Auth / RBAC / Vault Secrets
+                                 │
+                 ┌──────────────▼───────────────────────────┐
+                 │      Job Queue (BullMQ + Redis)           │
+                 └───────┬───────────────────────────────────┘
+                         │
+              ┌──────────▼────────────────────────────────────────┐
+              │   Scanning Engine Cluster                          │
+              │  - Rust Port Scanner                               │
+              │  - Python CMS Analyzer                             │
+              │  - HTTP Security Scanner                           │
+              │  - Passive Recon Modules                           │
+              │  - Credentialed Agents (SSH/SMB/HTTP)              │
+              └──────────┬────────────────────────────────────────┘
+                         │
+                 ┌───────▼───────────────────┐
+                 │   Sandbox Layer            │
+                 │ (Docker / Firecracker VMs) │
+                 └───────┬────────────────────┘
+                         │
+             ┌───────────▼──────────────┐
+             │ Database Layer            │
+             │ PostgreSQL / Redis Cache  │
+             └───────────────────────────┘
+```
+# 🔬 Core Algorithms
+
+## ⚡ 1. **Async TCP Scan Algorithm**
+
+```
+- Pre-generate SYN packets
+- Dispatch in async batches (512–2048)
+- Track RTT
+- Infer open/closed/filtered
+- Adaptive timeout for noisy networks
+```
+
+## 🔍 2. DNS Permutation Algorithm
+
+```
+- Apply permutations: hyphens, TLD swaps, prefixes
+- Resolve in parallel
+- Apply wildcard detector
+- Drop noise using ASN/CIDR mapping
+- Rank by validity score
+```
+
+## 📊 3. Risk Scoring Model
+
+```
+Risk = CVSS × Exploitability × Exposure × Asset Value
+```
+
+## 🧠 4. AI Attack Path Builder
+
+```
+- Build a graph: Services → Issues → Priv Esc → Lateral Moves
+- Weight nodes based on likelihood
+- Output highest-probability exploitation chain
 ```
 
 ---
 
-# 🧠 Core Algorithms
+# 📊 Dashboard & Management
 
-### **1. Fast TCP Scan Algorithm**
+### **1. Real-Time Scan Viewer**
 
-```
-- Use Tokio runtime (Rust async)
-- Send non-blocking SYN packets
-- Track RTT (round-trip time)
-- Infer closed/open/filtered states
-- Batch ports into async segments (512–2048)
-```
+* Progress bars
+* Live logs
+* Module-level status
 
-### **2. DNS Permutation Engine**
+### **2. Risk Heatmaps**
 
-```
-- Generate permutations: add/remove hyphens, prefixes, TLD swaps
-- Resolve in parallel
-- Apply wildcard detector
-- Remove false positives using ASNs + CIDR match
-```
+* Host-based
+* Severity-weighted
+* Department / Business-unit view
 
-### **3. AI Attack Path Model**
+### **3. Scheduled Scans**
 
-```
-- Build graph: Services → Weaknesses → CVEs → Privilege Levels
-- Use depth-first search with weighted scoring
-- Output most realistic exploitation chain
-```
+* Daily/Weekly/Monthly
+* Compare results over time
+* Attack surface analysis
 
-### **4. Risk Scoring Model**
+### **4. Scan Diffs**
 
-```
-Risk = CVSS × Exploitability × Asset Value × Exposure Score
-```
+* "New vulnerabilities since last scan"
+* "Resolved vulnerabilities"
+
+---
+
+# 🧩 Plugin Ecosystem
+
+### **Supported Plugin Types**
+
+* TypeScript
+* Python
+* Docker-isolated
+
+### **Plugin Features**
+
+* Hot-reload
+* Safe sandboxing
+* Custom findings, scanners, or rules
+* Ideal for enterprise MSSPs
+
+---
+
+# 🛡 Security & Sandboxing
+
+* Firecracker micro-VM isolation (optional)
+* Container-level isolation for plugin execution
+* Vault-secured SSH/SMB/HTTP credentials
+* Strict audit logs for every action
+* Multi-tenant workspace isolation
 
 ---
 
 # 🛠 Development Roadmap
 
-### **Phase 1 — Foundations**
+### **Phase 1 — Base Platform**
 
-* Setup Next.js + Tailwind UI
-* Setup API + JWT Auth
-* Setup database (PostgreSQL)
-* Build project structure
+* Auth, RBAC, Dashboard, Project Structure
+* Real-time logging system
+* Job queue + worker system
 
-### **Phase 2 — Scanning Engine**
+### **Phase 2 — Active Scanners**
 
-* TCP/UDP scanner
-* Subdomain engine
-* HTTP analyzer
+* TCP/UDP
+* HTTP
+* CMS
+* Subdomain discovery
 
 ### **Phase 3 — AI Layer**
 
 * Attack Path Engine
-* Fix Advisor
-* Log Summaries
+* AI Fix Advisor
+* Narrative Generator
 
-### **Phase 4 — Dashboard**
+### **Phase 4 — Enterprise Features**
 
-* Heatmaps
-* Trends
-* Diffs
-
-### **Phase 5 — Integrations & Plugins**
-
-* Slack, Jira, Webhooks
-* Plugin marketplace system
-
-### **Phase 6 — Hardening**
-
-* Firecracker sandboxing
-* RBAC + audit logs
 * Multi-tenancy
+* RBAC
+* Credentialed scanning
+* Plugin ecosystem
 
----
+### **Phase 5 — Integrations**
 
-# 📁 Recommended Project Structure
-
-```
-vulnscanner/
-│
-├── api/
-│   ├── controllers/
-│   ├── routes/
-│   ├── middlewares/
-│   ├── services/
-│
-├── workers/
-│   ├── queue.ts
-│   ├── scanners/
-│   ├── jobs/
-│
-├── engines/
-│   ├── rust-scanner/
-│   ├── cms/
-│   ├── http/
-│   ├── dns/
-│
-├── plugins/
-│   ├── python/
-│   ├── node/
-│   ├── docker/
-│
-├── web/
-│   ├── components/
-│   ├── pages/
-│   ├── utils/
-│
-├── docs/
-└── README.md
-```
+* Slack
+* Teams
+* Jira
+* GitHub Security Alerts
 
 ---
 
 # 🧰 Tech Stack
 
-* **Frontend:** Next.js, Tailwind
-* **Backend:** Node.js (TypeScript)
-* **Scanner Engine:** Rust + Python
-* **Queue System:** BullMQ + Redis
-* **Database:** PostgreSQL
-* **Security:** Vault, JWT
-* **Virtualization:** Docker / Firecracker
-* **AI:** OpenAI/Local LLM models
+| Layer             | Technologies         |
+| ----------------- | -------------------- |
+| Frontend          | Next.js, Tailwind    |
+| Backend API       | Node.js, TypeScript  |
+| Workers           | BullMQ, Node         |
+| High-Speed Engine | Rust                 |
+| CMS/HTTP Modules  | Python               |
+| Sandbox           | Docker / Firecracker |
+| Database          | PostgreSQL           |
+| Cache             | Redis                |
+| Security          | Vault, JWT           |
+| AI                | OpenAI / Local LLM   |
 
 ---
 
-# 📦 Installation
+# 📁 Project Structure
 
 ```
-git clone https://github.com/yourname/vulnscanner
-cd vulnscanner
-pnpm install
-pnpm dev
-```
-
----
-
-# 🚀 Usage
-
-Start the platform:
-
-```
-pnpm dev
-```
-
-Run scanner:
-
-```
-POST /api/scan
-{
-  "target": "example.com",
-  "modules": ["portscan", "http", "subdomains"]
-}
+vulnscanner/
+│
+├── api/                 # API Gateway
+├── workers/             # Job workers
+├── engines/             # Scanning engines
+│   ├── rust/            # High-speed port scanner
+│   ├── python/          # CMS/HTTP modules
+│   └── dns/             # Subdomain engine
+│
+├── plugins/             # Plugin system
+│
+├── sandbox/             # Firecracker/Docker isolation layer
+│
+├── web/                 # Next.js frontend
+│
+└── docs/                # Documentation
 ```
 
 ---
 
-# 🤝 Contributing
+# ⚠️ Disclaimer
 
-Pull requests are welcome!
-Please open an issue first to discuss major changes.
+This repository provides **documentation only**.
+The **core scanning engine, AI models, exploitation systems, and backend source code are private** for security and intellectual property protection.
 
----
+For demonstration, collaboration, or interviews:
+📩 *Access can be granted privately upon request.*
 
-# 📄 License
-
-MIT. Free to use for commercial & personal use.
-
----
-
-If you want, I can also generate:
-
-✅ **Logo + Branding**
-📈 **Architecture PNG diagram**
-🎨 **UI mockups**
-🛠 **System design documentation**
-📂 **GitHub project with issues + milestones**
-
-Just tell me!
 
